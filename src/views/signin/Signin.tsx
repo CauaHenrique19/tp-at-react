@@ -15,7 +15,6 @@ import { signIn } from "../../services/authentication";
 
 import logo from "../../assets/img/logo.png";
 import fakelogin from "../../data/fakelogin.json";
-import { mainPath } from "../../routes";
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ const SignIn: React.FC = () => {
     } else {
       localStorage.setItem("session", JSON.stringify(response.session));
       localStorage.setItem("user", JSON.stringify(response.user));
-      navigate(`/${mainPath}/`);
+      navigate("/");
     }
   };
 
@@ -81,7 +80,7 @@ const SignIn: React.FC = () => {
           }}
           size={{ xs: 12 }}
         >
-          <Link to={`/${mainPath}/signup`}>Cadastrar</Link>
+          <Link to={"/signup"}>Cadastrar</Link>
         </GridComponent>
         <GridComponent sx={styles.marginTop} size={{ xs: 12 }}>
           <Button variant="contained" fullWidth={true} onClick={verifyLogin}>

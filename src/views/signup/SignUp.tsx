@@ -14,7 +14,6 @@ import { signUp } from "../../services/authentication";
 import { useAppContext } from "../../context";
 
 import logo from "../../assets/img/logo.png";
-import { mainPath } from "../../routes";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const SignUp: React.FC = () => {
       supabase
     );
 
-    navigate(`/${mainPath}/signin`); 
+    navigate("/signin"); 
   };
 
   return (
@@ -98,7 +97,7 @@ const SignUp: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <Link to={`/${mainPath}/signin`}>{t("sign-in")}</Link>
+            <Link to={"/signin"}>{t("sign-in")}</Link>
           </BoxComponent>
           <Button
             type="submit"

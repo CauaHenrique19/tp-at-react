@@ -10,7 +10,6 @@ import {
   actionTypeListToInt,
   validateForm,
 } from "../../utils/actions";
-import { mainPath } from "../../routes";
 
 const Form: React.FC = () => {
   const { t, supabase, user } = useAppContext();
@@ -90,7 +89,7 @@ const Form: React.FC = () => {
       } else {
         // message
         setTimeout(() => {
-          navigate(`/${mainPath}/`);
+          navigate("/");
         }, 3000);
       }
     } catch (err) {

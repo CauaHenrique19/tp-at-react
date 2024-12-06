@@ -9,8 +9,6 @@ import Settings from './views/settings/Settings';
 import Signup from './views/signup/SignUp';
 import Signin from './views/signin/Signin';
 
-export const mainPath = "at-tp-react";
-
 const AppRoutes: React.FC = () => {
   return (
     <Router>
