@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { list } from "../services/database";
 
 const loadProfile = async (user, supabase) => {
@@ -17,8 +16,8 @@ const loadProfile = async (user, supabase) => {
         id: d[0].id,
         name: d[0].name,
         birth: d[0].birth,
-        weigth: d[0].weight,
-        heigth: d[0].height,
+        weigth: d[0].weigth,
+        heigth: d[0].heigth,
       };
     }
   }
