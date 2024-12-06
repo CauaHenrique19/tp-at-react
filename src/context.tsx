@@ -14,7 +14,8 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
 import { AppContextInterface } from "./interfaces";
-import { logout } from "./services/authentication"
+import { ThemeProvider } from "@mui/material";
+import { darkTheme } from "./themes";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -42,7 +43,6 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const getUser = () => {
     const userStr = localStorage.getItem("user");
     if (!userStr) {
-      // logout(null, supabase);
       return null;
     }
     return JSON.parse(userStr);
@@ -70,7 +70,9 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   return (
     <AppContext.Provider value={sharedState}>
-      { children }
+      <ThemeProvider theme={darkTheme } >
+        { children }
+      </ThemeProvider>
     </AppContext.Provider>
   );
 };

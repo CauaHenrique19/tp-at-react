@@ -35,6 +35,7 @@
     "diaper-wet": "Wet",
     "diaper-dirty": "Dirty",
     "diaper-both": "Both",
-    "diaper-clean": "Clean"
+    "diaper-clean": "Clean",
+    "add-thing": "Add Something"
   }
 }

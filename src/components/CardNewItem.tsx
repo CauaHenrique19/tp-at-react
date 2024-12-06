@@ -1,10 +1,14 @@
 import AddIcon from "@mui/icons-material/Add";
 
+import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 import { CardComponent, FabComponent, GridComponent, TypographyComponent } from ".";
+import { useAppContext } from "../context";
 
 export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
+  const { t } = useAppContext();
+  const theme = useTheme()
   const navigate = useNavigate();
 
   return (
@@ -56,7 +60,7 @@ export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
             color: "#8f8f8f",
           }}
         >
-          Adicione algo
+          {t("add-thing")}
         </TypographyComponent>
       </GridComponent>
       <GridComponent
@@ -70,9 +74,13 @@ export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
           size="small"
           sx={{
             color: color,
-            backgroundColor: "#fff",
+            backgroundColor: theme.palette.background.default,
             position: "relative",
             bottom: "-20px",
+            '&:hover': {
+              backgroundColor: theme.palette.background.paper,
+              color: theme.palette.text.primary
+            }
           }}
           onClick={() => navigate(`/new/${actionType}`)}
         >

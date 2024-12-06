@@ -81,7 +81,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <GridComponent container={true}>
+    <GridComponent sx={{ backgroundColor: theme.palette.background.default }} container={true}>
       <GridComponent
         size={{ xs: 12 }}
         sx={{
@@ -107,7 +107,6 @@ const Home: React.FC = () => {
                   ...styles.iconButton,
                   border: `2px solid ${theme.palette.primary.main}`,
                 }}
-                onClick={() => navigate("/dashboard")}
               >
                 <SignalCellularAltIcon
                   sx={{
@@ -120,6 +119,7 @@ const Home: React.FC = () => {
                 sx={{
                   ...styles.centerBox,
                   ...styles.boxText,
+                  color: theme.palette.text.primary
                 }}
               >
                 <TypographyComponent component="p" sx={{ ...styles.text2 }}>
@@ -135,6 +135,7 @@ const Home: React.FC = () => {
             <BoxComponent
               sx={{
                 ...styles.centerBox,
+                color: theme.palette.text.primary
               }}
             >
               <AvatarComponent sx={{ width: 90, height: 90 }} src={babyImage} />
@@ -164,6 +165,7 @@ const Home: React.FC = () => {
             <BoxComponent
               sx={{
                 ...styles.centerBox,
+                color: theme.palette.text.primary
               }}
             >
               <IconButtonComponent

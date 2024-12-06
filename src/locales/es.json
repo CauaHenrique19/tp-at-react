@@ -35,6 +35,7 @@
     "diaper-wet": "Mojado",
     "diaper-dirty": "Sucio",
     "diaper-both": "Ambos",
-    "diaper-clean": "Limpio"
+    "diaper-clean": "Limpio",
+    "add-thing": "Agregar Algo"
   }
 }

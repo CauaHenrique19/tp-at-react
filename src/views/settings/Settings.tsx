@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import { useTheme } from "@mui/material/styles";
 
 import { useAppContext } from "../../context";
 import { logout } from "../../services/authentication";
@@ -18,6 +19,7 @@ import { saveOrUpdate } from "../../services/database";
 import { loadProfile } from "../../utils/loader";
 
 const Settings: React.FC = () => {
+  const theme = useTheme();
   const { changeLanguage, supabase, t, user } = useAppContext();
 
   const navigate = useNavigate();
@@ -91,8 +93,8 @@ const Settings: React.FC = () => {
         container={true}
         spacing={2}
         sx={{
-          marginTop: "1em",
           padding: "1em",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <GridComponent size={{ xs: 12 }}>

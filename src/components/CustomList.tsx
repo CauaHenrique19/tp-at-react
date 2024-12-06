@@ -7,10 +7,13 @@ import CribIcon from "@mui/icons-material/Crib";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import SpaIcon from "@mui/icons-material/Spa";
 
+import { useTheme } from "@mui/material/styles";
+
 import { useAppContext } from "../context";
 
 export const CustomList = ({ items, ...props }) => {
   const { t } = useAppContext();
+  const theme = useTheme()
 
   const getIcon = (typeAction: number) => {
     switch (typeAction) {
@@ -44,7 +47,7 @@ export const CustomList = ({ items, ...props }) => {
         return (
           <ListItem
             sx={{
-              backgroundColor: "#fff",
+              backgroundColor: theme.palette.background.default,
               borderRadius: "60px",
               marginTop: "1em",
             }}
@@ -57,6 +60,11 @@ export const CustomList = ({ items, ...props }) => {
               </Avatar>
             </ListItemAvatar>
             <ListItemText
+              sx={
+                {
+                  color: theme.palette.text.primary,
+                }
+              }
               primary={t(typeStr)}
               secondary={item.observation}
             />
