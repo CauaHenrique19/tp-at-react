@@ -1,3 +1,5 @@
+/// <reference types="vite/types/importMeta.d.ts" />
+
 import React, {
   createContext,
   useContext,
