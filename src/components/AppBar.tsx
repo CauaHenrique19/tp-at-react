@@ -6,6 +6,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 
+import { mainPath } from '../routes'
 import { IconButtonComponent, BoxComponent } from ".";
 
 export const AppBarComponent: React.FC = ({ ...props }: any) => {
@@ -23,7 +24,7 @@ export const AppBarComponent: React.FC = ({ ...props }: any) => {
             position: "relative",
             zIndex: "2",
           }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate(`/${mainPath}/`)}
         >
           <ArrowBackIcon />
         </IconButtonComponent>

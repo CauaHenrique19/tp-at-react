@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 
 import { CardComponent, FabComponent, GridComponent, TypographyComponent } from ".";
+import { mainPath } from "../routes";
 
 export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
             position: "relative",
             bottom: "-20px",
           }}
-          onClick={() => navigate(`/new/${actionType}`)}
+          onClick={() => navigate(`/${mainPath}/new/${actionType}`)}
         >
           <AddIcon />
         </FabComponent>

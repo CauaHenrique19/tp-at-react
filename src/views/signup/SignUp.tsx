@@ -14,6 +14,7 @@ import { signUp } from "../../services/authentication";
 import { useAppContext } from "../../context";
 
 import logo from "../../assets/img/logo.png";
+import { mainPath } from "../../routes";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -24,13 +25,13 @@ const SignUp: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const register = async () => {
-    const { data, error } = await signUp(
+    await signUp(
       email,
       password,
       supabase
     );
 
-    navigate("/signin")
+    navigate(`/${mainPath}/signin`); 
   };
 
   return (
@@ -97,7 +98,7 @@ const SignUp: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <Link to="/signin">{t("sign-in")}</Link>
+            <Link to={`/${mainPath}/signin`}>{t("sign-in")}</Link>
           </BoxComponent>
           <Button
             type="submit"

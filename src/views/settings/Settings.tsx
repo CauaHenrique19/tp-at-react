@@ -61,7 +61,7 @@ const Settings: React.FC = () => {
     if (error) {
     } else {
       setTimeout(() => {
-        navigate("/");
+        navigate(`/${mainPath}/`);
       }, 3000);
     }
 

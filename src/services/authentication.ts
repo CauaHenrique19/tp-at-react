@@ -1,12 +1,12 @@
 import { redirect } from "react-router-dom";
-import ISignResponse from "../interfaces/SignResponse";
 import { AuthResponse } from "@supabase/supabase-js";
+import { mainPath } from "../routes";
 
 const signUp = async (
   email: string,
   password: string,
   supabase: any
-): Promise<ISignResponse> => {
+): Promise<AuthResponse> => {
   return await supabase.auth.signUp({
     email,
     password,
@@ -34,13 +34,13 @@ const isAuthenticated = () => {
 const handleVerificationProtected = () => {
   const session = localStorage.getItem("session");
 
-  if (!session) throw redirect("/signin");
+  if (!session) throw redirect(`/${mainPath}/signin`);
   return null;
 };
 
 const logout = async (navigate: any, supabase: any) => {
   await supabase.auth.signOut();
-  const loginRouter = "/signin";
+  const loginRouter = `/${mainPath}/signin`;
 
   localStorage.clear();
   if (navigate) {

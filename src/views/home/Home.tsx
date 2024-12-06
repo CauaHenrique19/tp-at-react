@@ -25,6 +25,7 @@ import { loadProfile } from "../../utils/loader";
 import { calculateDuration, roundDays } from "../../utils/date";
 
 import babyImage from "../../assets/img/baby.png";
+import { mainPath } from "../../routes";
 
 const Home: React.FC = () => {
   const { t, user, supabase } = useAppContext();
@@ -107,7 +108,7 @@ const Home: React.FC = () => {
                   ...styles.iconButton,
                   border: `2px solid ${theme.palette.primary.main}`,
                 }}
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate(`/${mainPath}/dashboard`)}
               >
                 <SignalCellularAltIcon
                   sx={{
@@ -171,7 +172,7 @@ const Home: React.FC = () => {
                   ...styles.iconButton,
                   border: `2px solid ${theme.palette.primary.main}`,
                 }}
-                onClick={() => navigate("/settings")}
+                onClick={() => navigate(`/${mainPath}/settings`)}
               >
                 <SettingsIcon
                   sx={{

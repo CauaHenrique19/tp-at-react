@@ -14,13 +14,15 @@ import { useAppContext } from "../../context";
 import { signIn } from "../../services/authentication";
 
 import logo from "../../assets/img/logo.png";
+import fakelogin from "../../data/fakelogin.json";
+import { mainPath } from "../../routes";
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const { supabase, t } = useAppContext();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(fakelogin.email);
+  const [password, setPassword] = useState(fakelogin.password);
 
   const verifyLogin = async () => {
     let { data: response, error } = await signIn(email, password, supabase);
@@ -30,7 +32,7 @@ const SignIn: React.FC = () => {
     } else {
       localStorage.setItem("session", JSON.stringify(response.session));
       localStorage.setItem("user", JSON.stringify(response.user));
-      navigate("/");
+      navigate(`/${mainPath}/`);
     }
   };
 
@@ -50,7 +52,6 @@ const SignIn: React.FC = () => {
             ...styles.centerBox,
             ...styles.marginTop,
           }}
-          
           size={{ xs: 12 }}
         >
           <TypographyComponent variant="h3">Login</TypographyComponent>
@@ -62,7 +63,6 @@ const SignIn: React.FC = () => {
           <TextFieldComponent
             label="E-mail"
             fullWidth={true}
-            onChange={(event) => setEmail(event.target.value)}
             value={email}
           />
         </GridComponent>
@@ -70,7 +70,6 @@ const SignIn: React.FC = () => {
           <TextFieldComponent
             label="Senha"
             fullWidth={true}
-            onChange={(event) => setPassword(event.target.value)}
             type="password"
             value={password}
           />
@@ -82,7 +81,7 @@ const SignIn: React.FC = () => {
           }}
           size={{ xs: 12 }}
         >
-          <Link to="/signup">Cadastrar</Link>
+          <Link to={`/${mainPath}/signup`}>Cadastrar</Link>
         </GridComponent>
         <GridComponent sx={styles.marginTop} size={{ xs: 12 }}>
           <Button variant="contained" fullWidth={true} onClick={verifyLogin}>
