@@ -15,7 +15,7 @@ export const CardNewItemComponent = ({ Icon, color, title, actionType }) => {
     <CardComponent
       sx={{
         overflow: "visible",
-        borderRadius: "10%",
+        borderRadius: "10px",
       }}
     >
       <GridComponent

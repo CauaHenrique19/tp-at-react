@@ -29,7 +29,6 @@ const Settings: React.FC = () => {
   const [birth, setBirth] = useState("");
   const [weigth, setWeight] = useState("");
   const [heigth, setHeight] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const verifyLanguage = (language: string) => {
     const storedLanguage = localStorage.getItem("language");
@@ -40,8 +39,6 @@ const Settings: React.FC = () => {
   };
 
   const save = async () => {
-    setLoading(true);
-
     const d: any = {
       user_id: user ? user.id : null,
       name,
@@ -54,20 +51,13 @@ const Settings: React.FC = () => {
       d.id = id
     }
 
-    const { data: result, error } = await saveOrUpdate(
+    await saveOrUpdate(
       "profile",
       d,
       supabase
     );
-
-    if (error) {
-    } else {
-      setTimeout(() => {
-        navigate(`/`);
-      }, 3000);
-    }
-
-    setLoading(false);
+    
+    navigate(`/`);
   };
 
   const carregarUser = async () => {
@@ -94,7 +84,6 @@ const Settings: React.FC = () => {
         spacing={2}
         sx={{
           padding: "1em",
-          backgroundColor: theme.palette.background.default,
         }}
       >
         <GridComponent size={{ xs: 12 }}>
@@ -133,8 +122,8 @@ const Settings: React.FC = () => {
             Logout
           </Button>
         </GridComponent>
-        <GridComponent size={{ xs: 12 }} sx={{ mt: 1 }}>
-          <TypographyComponent component="h5" variant="h5">
+        <GridComponent size={{ xs: 12 }}>
+          <TypographyComponent sx={{ color: theme.palette.text.primary }} component="h5" variant="h5">
             {t("baby-data-title")}
           </TypographyComponent>
         </GridComponent>

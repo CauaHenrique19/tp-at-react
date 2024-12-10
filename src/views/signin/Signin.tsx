@@ -18,7 +18,7 @@ import fakelogin from "../../data/fakelogin.json";
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
-  const { supabase, t } = useAppContext();
+  const { supabase, setUser, t } = useAppContext();
 
   const [email, setEmail] = useState(fakelogin.email);
   const [password, setPassword] = useState(fakelogin.password);
@@ -31,6 +31,7 @@ const SignIn: React.FC = () => {
     } else {
       localStorage.setItem("session", JSON.stringify(response.session));
       localStorage.setItem("user", JSON.stringify(response.user));
+      setUser(response.user);
       navigate("/");
     }
   };

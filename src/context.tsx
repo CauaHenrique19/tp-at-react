@@ -5,6 +5,7 @@ import React, {
   useContext,
   ReactNode,
   useEffect,
+  useState,
 } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useTranslation } from "react-i18next";
@@ -14,7 +15,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
 import { AppContextInterface } from "./interfaces";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme } from "./themes";
 
 dayjs.extend(utc);
@@ -49,6 +50,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   };
 
   let user = getUser();
+  const [userState, setUser] = useState(user);
 
   useEffect(() => {
     storedLanguage = localStorage.getItem("language");
@@ -65,12 +67,14 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     changeLanguage,
     t,
     storedLanguage,
-    user,
+    setUser,
+    user: userState,
   };
 
   return (
     <AppContext.Provider value={sharedState}>
       <ThemeProvider theme={darkTheme } >
+        <CssBaseline />
         { children }
       </ThemeProvider>
     </AppContext.Provider>

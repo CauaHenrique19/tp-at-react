@@ -6,7 +6,6 @@ import { AppBarComponent, Button, Diaper, Eat, Sleep, GridComponent } from "../.
 import { list, saveOrUpdate } from "../../services/database";
 import ActionInterface from "../../interfaces/ActionInterface";
 import {
-  actionTypeList,
   actionTypeListToInt,
   validateForm,
 } from "../../utils/actions";
@@ -19,7 +18,6 @@ const Form: React.FC = () => {
   const actionType = params.type;
 
   const [data, setData] = useState<ActionInterface | null>(null);
-  const [loading, setLoading] = useState(false);
 
   const getForm = (actionType: string) => {
     switch (actionType) {
@@ -52,9 +50,6 @@ const Form: React.FC = () => {
   };
 
   const save = async () => {
-    console.log('save')
-
-    setLoading(true);
     try {
       let actionTypeInt = 0;
       if (actionType) {
@@ -75,7 +70,6 @@ const Form: React.FC = () => {
 
       const validates = validateForm(actionTypeInt, d, t);
       if (validates.length > 0) {
-        // message
         return;
       }
 
@@ -85,18 +79,12 @@ const Form: React.FC = () => {
         supabase
       );
       if (error) {
-        // message
       } else {
-        // message
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
+        navigate("/");
       }
     } catch (err) {
       console.error(err);
-     // message
     }
-    setLoading(false);
   };
 
   useEffect(() => {

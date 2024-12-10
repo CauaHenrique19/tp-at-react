@@ -29,7 +29,6 @@ export const Sleep: React.FC<SleepProps> = ({ data, setData, t }) => {
             }
             label={t("data-hour-start")}
             name="start_date"
-            fullWidth={true}
             ampm={false}
             format="DD/MM/YYYY HH:mm"
             onChange={(value) => handleInputChange('start_date', new Date(value.toString()), data, setData)}
@@ -44,7 +43,6 @@ export const Sleep: React.FC<SleepProps> = ({ data, setData, t }) => {
             }
             label={t("data-hour-end")}
             name="end_date"
-            fullWidth={true}
             ampm={false}
             format="DD/MM/YYYY HH:mm"
             onChange={(value) => handleInputChange('end_date', new Date(value.toString()), data, setData)}

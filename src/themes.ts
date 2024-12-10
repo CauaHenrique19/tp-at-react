@@ -23,6 +23,24 @@ const darkTheme = createTheme({
       secondary: "#fff",
     },
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#ffffff33",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#ffffff66",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#3f50b5",
+            borderWidth: 2,
+          },
+        },
+      },
+    },
+  },
 });
 
 export { darkTheme };
